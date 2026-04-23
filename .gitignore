@@ -1,0 +1,13 @@
+## Visual Studio
+.vs/
+bin/
+obj/
+*.user
+
+## ビルド成果物（ゲームフォルダへコピーするので不要）
+*.dll
+*.pdb
+
+## OS
+Thumbs.db
+.DS_Store
