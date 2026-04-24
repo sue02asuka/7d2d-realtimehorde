@@ -4,17 +4,19 @@
 
 | ツール | 入手先 | 備考 |
 |--------|--------|------|
-| Visual Studio Community 2022 | https://visualstudio.microsoft.com/ja/vs/community/ | 無料 |
+| Visual Studio Community 2026 | https://visualstudio.microsoft.com/ja/vs/community/ | 無料・最新版（2022でも可） |
 | 7 Days to Die（Steam版） | 所持済み | |
 | .NET Framework 4.8 SDK | VS インストール時に自動取得 | |
 
 ## 手順
 
-### Step 1: Visual Studio Community 2022 のインストール
+### Step 1: Visual Studio Community 2026 のインストール
 
 1. 上記リンクからダウンロードして起動
 2. 「ワークロード」タブで **「.NET デスクトップ開発」** にチェックを入れる
 3. インストール完了まで待つ（10〜20分）
+
+> ✅ **Visual Studio 2026 推奨**（2025年11月GA・最新版）。2022でも動作します。
 
 ### Step 2: プロジェクトを Visual Studio で開く
 
