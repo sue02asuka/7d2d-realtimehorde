@@ -20,7 +20,7 @@ namespace RealTimeHorde.Patches
         {
             // ゲームが完全に起動していない間はスキップ
             if (GameManager.Instance?.gameStateManager == null) return;
-            if (!GameManager.Instance.gameStateManager.IsGameStartedDone()) return;
+            if (!GameManager.Instance.gameStateManager.IsGameStarted()) return;
             if (GameManager.Instance.World == null) return;
 
             var now = DateTime.Now;
