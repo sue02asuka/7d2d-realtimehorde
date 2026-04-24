@@ -10,9 +10,13 @@ namespace RealTimeHorde.Managers
     {
         public static List<HordeSchedule> Schedules { get; private set; } = new List<HordeSchedule>();
 
+        // rth_save コマンドから参照できるよう保持
+        public static string? ConfigPath { get; private set; }
+
         public static void Load(string modPath)
         {
             var configPath = Path.Combine(modPath, "Config", "horde-schedule.xml");
+            ConfigPath = configPath;
             if (!File.Exists(configPath))
             {
                 Log.Warning($"[RealTimeHorde] 設定ファイルが見つかりません: {configPath}");
