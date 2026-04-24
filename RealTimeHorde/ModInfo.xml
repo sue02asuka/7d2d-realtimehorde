@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ModInfo>
+	<Name value="RealTimeHorde" />
+	<DisplayName value="Real Time Horde" />
+	<Description value="Horde night triggered by real-world day and time. Edit Config/horde-schedule.xml to set your schedule." />
+	<Author value="sue02" />
+	<Version value="1.0.0" />
+	<Website value="https://github.com/sue02asuka/7d2d-realtimehorde" />
+</ModInfo>
