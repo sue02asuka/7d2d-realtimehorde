@@ -47,8 +47,9 @@ namespace RealTimeHorde.Commands
 
         public override void Execute(List<string> _params, CommandSenderInfo _senderInfo)
         {
-            // _params[0] = "rth", _params[1] = サブコマンド
-            var sub = _params.Count >= 2 ? _params[1].ToLower() : "help";
+            // 7D2Dはコマンド名を除いた引数だけを _params に渡す
+            // 例: "rth add Friday 22 0 30" → _params = ["add", "Friday", "22", "0", "30"]
+            var sub = _params.Count >= 1 ? _params[0].ToLower() : "help";
 
             switch (sub)
             {
@@ -84,8 +85,8 @@ namespace RealTimeHorde.Commands
         // rth add <曜日> <時> <分> [警告分]
         private void CmdAdd(List<string> _params)
         {
-            // _params: ["rth", "add", 曜日, 時, 分, (警告分)]
-            if (_params.Count < 5)
+            // _params: ["add", 曜日, 時, 分, (警告分)]
+            if (_params.Count < 4)
             {
                 Log.Out("[RealTimeHorde] 使い方: rth add <曜日> <時> <分> [警告分]");
                 Log.Out("  例: rth add Wednesday 22 0 30");
@@ -94,12 +95,12 @@ namespace RealTimeHorde.Commands
             }
             try
             {
-                if (!Enum.TryParse(_params[2], true, out DayOfWeek day))
-                    throw new Exception($"不正な曜日: '{_params[2]}'  例→ Wednesday / Friday");
+                if (!Enum.TryParse(_params[1], true, out DayOfWeek day))
+                    throw new Exception($"不正な曜日: '{_params[1]}'  例→ Wednesday / Friday");
 
-                var hour    = int.Parse(_params[3]);
-                var minute  = int.Parse(_params[4]);
-                var warning = _params.Count >= 6 ? int.Parse(_params[5]) : 0;
+                var hour    = int.Parse(_params[2]);
+                var minute  = int.Parse(_params[3]);
+                var warning = _params.Count >= 5 ? int.Parse(_params[4]) : 0;
 
                 if (hour   < 0 || hour   > 23) throw new Exception($"時刻が不正: hour={hour}（0〜23）");
                 if (minute < 0 || minute > 59) throw new Exception($"時刻が不正: minute={minute}（0〜59）");
@@ -123,7 +124,8 @@ namespace RealTimeHorde.Commands
         // rth remove <番号>
         private void CmdRemove(List<string> _params)
         {
-            if (_params.Count < 3 || !int.TryParse(_params[2], out int idx))
+            // _params: ["remove", 番号]
+            if (_params.Count < 2 || !int.TryParse(_params[1], out int idx))
             {
                 Log.Out("[RealTimeHorde] 使い方: rth remove <番号>");
                 CmdList();
